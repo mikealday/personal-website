@@ -1,0 +1,247 @@
+/* ============================================================
+   COMPONENT — Navigation (desktop + mobile)
+
+   Z-index layer map:
+     201  nav                   fixed bar — always on top
+     199  .nav-mobile-overlay   full-screen menu backdrop, below nav bar
+     1    everything else
+   ============================================================ */
+
+site-nav {
+  position: relative;
+  z-index: 200;
+  display: block;
+}
+
+nav {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0;
+  z-index: 201;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 5rem;
+  background: rgba(7, 17, 31, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: padding 0.3s ease;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Logo ── */
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.nav-logo::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── Desktop nav links ── */
+.nav-links {
+  display: flex;
+  gap: 2.75rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover        { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ── Desktop CTA ── */
+.nav-cta-desktop {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 0.5rem 1.3rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-cta-desktop:hover { background: var(--gold-light); }
+
+/* ── Hamburger (hidden on desktop) ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid var(--border-med);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--text-dim);
+  transition: transform 0.25s ease, opacity 0.2s ease, background 0.2s;
+  transform-origin: center;
+}
+
+nav[data-menu-open] .nav-hamburger span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+nav[data-menu-open] .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+nav[data-menu-open] .nav-hamburger span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+nav[data-menu-open] .nav-hamburger span { background: var(--gold); }
+
+/* Mobile overlay — hidden on desktop, activated by media query below */
+.nav-mobile-overlay {
+  display: none;
+}
+
+/* ── Mobile breakpoint ── */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.25rem;
+  }
+
+  /* Hide desktop elements */
+  .nav-links       { display: none; }
+  .nav-cta-desktop { display: none; }
+
+  /* Show hamburger */
+  .nav-hamburger { display: flex; }
+
+  /* Overlay: full-viewport fixed panel — sits BELOW the nav bar (z-index:201)
+     so the hamburger/X button remains visible and clickable on top */
+  .nav-mobile-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    background: rgba(7, 17, 31, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    /* Hidden state */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-mobile-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* Overlay link list */
+  .nav-mobile-overlay ul {
+    list-style: none;
+    width: 100%;
+    max-width: 420px;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-mobile-overlay li {
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .nav-mobile-overlay li:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-mobile-overlay a {
+    display: block;
+    padding: 1.25rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-mobile-overlay a:hover,
+  .nav-mobile-overlay a:active {
+    color: var(--gold);
+    background: rgba(201, 169, 109, 0.05);
+  }
+
+  /* CTA item at the bottom of the overlay list */
+  .nav-overlay-cta {
+    border-bottom: none !important;
+    border-top: none !important;
+    padding: 1.5rem 0;
+  }
+
+  .nav-overlay-cta a {
+    display: inline-block;
+    width: auto;
+    padding: 0.85rem 2.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    margin: 0 auto;
+  }
+
+  .nav-overlay-cta a:hover {
+    background: var(--gold-light);
+    color: var(--navy);
+  }
+}

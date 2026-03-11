@@ -1,0 +1,58 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ── Color Palette ── */
+  --navy:       #07111f;
+  --navy-2:     #0b1828;
+  --navy-3:     #111f33;
+  --navy-4:     #172845;
+
+  --border:     rgba(255, 255, 255, 0.06);
+  --border-med: rgba(255, 255, 255, 0.11);
+
+  --gold:       #c9a96d;
+  --gold-light: #e0c48a;
+  --gold-dim:   #8a6e3e;
+
+  --teal:       #4ecdc4;
+  --teal-dim:   rgba(78, 205, 196, 0.15);
+
+  --text:       #dce6f5;
+  --text-dim:   #7f96b8;
+  --text-muted: #3d5070;
+
+  /* ── Typography ── */
+  --serif: 'Playfair Display', Georgia, serif;
+  --mono:  'IBM Plex Mono', monospace;
+  --sans:  'IBM Plex Sans', system-ui, sans-serif;
+}
+
+/* ── HTML & Body ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+section {
+  padding: 7rem 5rem;
+  position: relative;
+  z-index: 1;
+}
