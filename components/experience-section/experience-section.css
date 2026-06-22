@@ -1,0 +1,177 @@
+/* ============================================================
+   SECTION — Experience / Timeline
+   ============================================================ */
+
+/* Timeline container */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.5rem; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold-dim), var(--teal-dim), transparent);
+}
+
+/* Timeline item row */
+.timeline-item {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.timeline-item:last-child { margin-bottom: 0; }
+
+/* Dot on the line */
+.timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--gold-dim);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.timeline-item:hover .timeline-dot {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+/* Card */
+.timeline-card {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  padding: 2rem 2.25rem;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.timeline-item:hover .timeline-card {
+  border-color: var(--border-med);
+  background: var(--navy-3);
+}
+
+.timeline-item:hover .timeline-card::before { opacity: 1; }
+
+/* Card internals */
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.timeline-company {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  text-transform: uppercase;
+}
+
+.timeline-period {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.timeline-role {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.timeline-summary {
+  font-size: 0.93rem;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  max-width: 70ch;
+}
+
+/* Win chips */
+.timeline-wins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.win-chip {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  background: rgba(201, 169, 109, 0.08);
+  border: 1px solid rgba(201, 169, 109, 0.2);
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
+}
+
+/* Earlier roles block */
+.earlier-roles {
+  margin-top: 3rem;
+  padding: 1.75rem 2rem;
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+}
+
+.earlier-roles h4 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.earlier-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.earlier-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.85rem;
+}
+
+@media (max-width: 960px) {
+  .timeline {
+    padding-left: 1rem;
+  }
+
+  .timeline-item {
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-card {
+    padding: 1.75rem;
+  }
+}

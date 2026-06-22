@@ -1,0 +1,112 @@
+/* ============================================================
+   SECTION — Leadership Philosophy
+   ============================================================ */
+
+#philosophy {
+  background: var(--navy-2);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* ── Quote Block ── */
+.philosophy-quote-block {
+  position: relative;
+}
+
+.philosophy-prose {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-top: 1.75rem;
+}
+
+.philosophy-prose + .philosophy-prose {
+  margin-top: 1rem;
+}
+
+.big-quote {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.4;
+  color: var(--text);
+  font-style: italic;
+  padding: 2.5rem;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  position: relative;
+}
+
+.big-quote::before {
+  content: '\201C';
+  font-family: var(--serif);
+  font-size: 6rem;
+  color: var(--gold-dim);
+  position: absolute;
+  top: -1.5rem;
+  left: 1.5rem;
+  line-height: 1;
+}
+
+.big-quote cite {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-style: normal;
+  margin-top: 1.25rem;
+}
+
+/* ── Principles List ── */
+.principles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+
+.principle:hover { border-color: var(--border-med); }
+
+.principle-num {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  min-width: 2rem;
+  padding-top: 0.1rem;
+}
+
+.principle-body h4 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.principle-body p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+@media (max-width: 960px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+}
