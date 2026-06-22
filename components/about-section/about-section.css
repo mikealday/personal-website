@@ -1,0 +1,107 @@
+/* ============================================================
+   SECTION — About (component)
+   ============================================================ */
+
+#about {
+  background: var(--navy-2);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ── About Text ── */
+.about-text p {
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  font-size: 1.02rem;
+}
+
+.about-text p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── Leadership Pillars ── */
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--gold-dim);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.pillar:hover {
+  border-left-color: var(--gold);
+  background: var(--navy-4);
+}
+
+.pillar-icon {
+  font-size: 1.4rem;
+  min-width: 2rem;
+  text-align: center;
+  margin-top: 0.1rem;
+}
+
+.pillar-text h4 {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.pillar-text p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* Centering wrapper (matches backup's shared .section-inner) */
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Spacing for header */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+/* Responsive adjustments copied from backup responsive.css */
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-text p { font-size: 0.95rem; }
+
+  .pillar { padding: 1.1rem 1.25rem; gap: 1rem; }
+  .pillar-icon { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .about-grid { gap: 1rem; }
+  .pillar-text p { font-size: 0.9rem; }
+}
